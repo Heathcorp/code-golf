@@ -1,2 +1,9 @@
 #include <stdio.h>
-int main(){for(int i=0;i++<100;){if(i%3){if(i%5){printf("%d\n",i);}else{puts("Buzz");}}else{puts("Fizz");}}}
+int main(){
+	int a,b;
+	for(int i=0;i++<100;puts("")){
+		if((a=i%3)==0)printf("Fizz");
+		if((b=i%5)==0)printf("Buzz");
+		if(a&&b)printf("%d",i);
+	}
+}
