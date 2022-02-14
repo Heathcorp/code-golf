@@ -1,1 +1,1 @@
-main(j,i,e){char*c="12345678987654321";for(;j<18;j+=2,puts("")){for(i=e=0;i<j;++i<1+j/2?e++:e--){printf("%9.*s%s\n",e,c,c+16-e);}}}
+main(j,i,e){for(char*c="12345678987654321";9/j;j++,puts(""))for(i=e=0;i<2*j-1;++i<j?e++:e--)printf("%9.*s%s\n",e,c,c+16-e);}
