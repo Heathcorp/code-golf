@@ -1,10 +1,1 @@
-main(){
-    char* charset="12345678987654321";
-    char* end = charset + 18;
-    
-    for(int j = 1; j < 18; j++,j++,puts("")){
-    	for(int i = 0, e = 1; i < j; i++, i < 1 + j / 2 ? e++ : e--){
-    		printf("%10.*s%s\n", e, charset, end - e);
-    	}
-    }
-}
+main(j,i,e){char*c="12345678987654321";for(;j<18;j+=2,puts("")){for(i=e=0;i<j;++i<1+j/2?e++:e--){printf("%9.*s%s\n",e,c,c+16-e);}}}
