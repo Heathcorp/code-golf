@@ -3,30 +3,35 @@
 #include<time.h>
 #include<string.h>
 
-// attempting to cheese the niven numbers code.golf challenge, to see whether it's possible/feasible
+// attempting to cheese the prime numbers code.golf challenge, to see whether it's possible/feasible
 int main()
 {
-	int target[33] = {1,2,3,4,5,6,7,8,9,10,12,18,20,21,24,27,30,36,40,42,45,48,50,54,60,63,70,72,80,81,84,90,100};
-	int a[33];
-	int ai,i;
+	// 				 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97
+	int target[25] = {1,2,2,4, 2, 4, 2, 4, 6, 2, 6, 4, 2, 4, 6, 6, 2, 6, 4, 2, 6, 4, 6, 8};
+	int a[25];
+	a[0] = 1;
+	int ai,i,mi;
 
-	int seed;
-	srand(time(NULL));
-	for(;;) {
-		seed = rand();
+	int seed = 100000000; // best known seed so far: 58794005
+	for(mi = 0;;seed++) {
 		srand(seed);
-		for (i=1,ai=0; i < 101 && ai < 33; i++)
+		for (i = 1; i < 25; i++)
 		{
-			rand()&3 ? a[ai++]=i : 0;
-		}
-		if(memcmp(target, a, 48) == 0) {
-			break;
-		}
+			if (target[i] != (a[i] = (rand() & 0b110)))
+			{
+				if (--i > mi)
+				{
+					mi = i;
+					printf("new most digits: %d with seed: %d\n", mi, seed);
+				}
+				break;
+			}
+		}		
 	}
 
 	printf("seed found! %d\n%d", seed, a[0]);
-	for(int j = 1; j < 33; j++) {
-		printf(" %d", a[j]);
+	for(i = 1; i < 25; i++) {
+		printf(" %d", a[i]);
 	}
 	puts("");
 }
