@@ -1,1 +1,1 @@
-main(){for(int i,n,b,a=1;i++<31;printf("%d\n",b=n),n+=a,a=b);}
+i,n,b,a=1;main(){for(;i++<31;printf("%d\n",b=n),n+=a,a=b);}
