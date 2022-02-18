@@ -1,1 +1,1 @@
-main(i,a,x){for(i=0;i<50;a=++i){for(x=0;a;x++)a&=a-1;x&1?0:printf("%d\n",i);}}
+i;main(x,a){for(;i<50;x&1?0:printf("%d\n",i),a=++i)for(x=0;a;x++)a&=a-1;}
