@@ -1,0 +1,1 @@
+i;main(d){for(;i++<100;puts(""))for(d=0;d<i;i%++d?0:printf("%d ",d));}
