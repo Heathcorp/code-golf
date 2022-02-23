@@ -1,0 +1,2 @@
+n(x,y){return x<y?x:y;}m(x,y){return x>y?x:y;}a,b,c,d,e,f,g,h;main(u,v)char**v;{for(;*++v;)sscanf(*v,"%d%d%d%d%d%d%d%d",&a,&b,&c,&d,&e,&f,&g,&h),printf("%d
+",a+c<e|e+g<a|b+d<f|f+h<b?0:abs(n(a+c,e+g)-m(a,e))*abs(n(b+d,f+h)-m(b,f)));}
