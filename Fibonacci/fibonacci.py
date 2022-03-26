@@ -1,2 +1,2 @@
-a,b,c=1,0,0
-exec(31*"print(c);c=a+b;a=b;b=c;")
+a,b=1,0
+exec(31*"print(b);a,b=a+b,a;")
