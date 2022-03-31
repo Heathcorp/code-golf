@@ -1,2 +1,2 @@
-i,n,b;main(a){for(;i++<31;printf("%d
-",b=n),n+=a,a=b);}
+n,b;main(a){for(;n<1e6;printf("%d
+",a=b))b=n,n+=a;}
