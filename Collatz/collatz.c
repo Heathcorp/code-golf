@@ -1,6 +1,2 @@
-i;j;main(n){
-for(;i++<1e3;j=0){
-for(n=i;n>1;j++)n=n%2?1+n*3:n/2;
-printf("%d\n",j);
-}
-}
+i;n;main(j){for(;i++<1e3;printf("%d
+",n))for(n=0,j=i;j>1;n++)j=j%2?j*3+1:j/2;}
