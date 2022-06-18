@@ -1,2 +1,3 @@
-for i in range(50):
- if sum([i>>b&1for b in range(50)])%2==0:print(i)
+r=range(50)
+for i in r:
+ if sum([i>>b&1for b in r])%2==0:print(i)
