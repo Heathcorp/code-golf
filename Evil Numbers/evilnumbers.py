@@ -1,3 +1,2 @@
-r=range(50)
-for i in r:
- if sum([i>>b&1for b in r])%2==0:print(i)
+for i in range(50):
+ if bin(i).count('1')%2==0:print(i)
