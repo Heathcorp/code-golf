@@ -4,5 +4,5 @@ for i in range(1,1001):
  if i%3<1:s+='Fizz'
  if i%5<1:s+='Buzz'
  if i%7<1:s+='Bar'
- if len(s)<1:s=str(i)
+ if not s:s=str(i)
  print(s)
