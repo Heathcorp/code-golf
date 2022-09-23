@@ -1,10 +1,6 @@
 import sys
 for arg in sys.argv[1:]:
- i=0
- tape=[0]*99
- p=0
- loops=[]
- skip=-1
+ i=0;tape=[0]*99;p=0;loops=[];skip=-1
  while i < len(arg):
   c=arg[i]
   if c==']':
