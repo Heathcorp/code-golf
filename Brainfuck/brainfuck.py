@@ -8,7 +8,7 @@ for arg in sys.argv[1:]:
    if skip==ls:skip=-1
    elif skip<0and tape[p]!=0:i=ls-1
   if c=='[':
-   loops.append(i)
+   loops+=[i]
    if skip<0and tape[p]==0:skip=i
   if skip<0:
    if c=='<':p-=1
