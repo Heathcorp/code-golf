@@ -1,19 +1,19 @@
 import sys
-for arg in sys.argv[1:]:
- i=0;tape=[0]*99;p=0;loops=[];skip=-1
- while i < len(arg):
-  c=arg[i]
+for a in sys.argv[1:]:
+ i=0;t=[0]*99;p=0;l=[];j=-1
+ while i<len(a):
+  c=a[i]
   if c==']':
-   ls=loops.pop()
-   if skip==ls:skip=-1
-   elif skip<0and tape[p]!=0:i=ls-1
+   k=l.pop()
+   if j==k:j=-1
+   elif j<0and t[p]:i=k-1
   if c=='[':
-   loops+=[i]
-   if skip<0and tape[p]==0:skip=i
-  if skip<0:
-   if c=='<':p-=1
-   if c=='>':p+=1
-   if c=='+':tape[p]+=1
-   if c=='-':tape[p]-=1
-   if c=='.':print(chr(tape[p]),end='')
+   l+=[i]
+   if j<0and t[p]<1:j=i
+  if j>0:c=0
+  if c=='<':p-=1
+  if c=='>':p+=1
+  if c=='+':t[p]+=1
+  if c=='-':t[p]-=1
+  if c=='.':print(chr(t[p]),end='')
   i+=1
