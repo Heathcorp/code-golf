@@ -1,10 +1,7 @@
-int i,li,j;
+int i,li,j,c,loops[9];
 main(p,a)char**a;{
 for(;*++a;p=i=li=j=0){
-char tape[999]={0};
-int loops[99]={0};
-char c;
-for(;c=*(*a+i);i++){
+for(char tape[99]={0};c=*(*a+i);i++){
 if(!j){if(c=='+')tape[p]++;if(c=='-')tape[p]--;if(c=='>')p++;if(c=='<')p--;if(c=='.')putchar(tape[p]);}
 if(c=='['){
 loops[li++]=i;
