@@ -1,1 +1,1 @@
-int i,l,j,c,b[9];main(p,a)char**a;{for(;*++a;p=i=l=j=0){for(char t[99]={0};c=*(*a+i);i++){if(!j){if(c=='+')t[p]++;if(c=='-')t[p]--;if(c=='>')p++;if(c=='<')p--;if(c=='.')putchar(t[p]);}if(c=='['){b[l++]=i;if(t[p]==0 && !j){j=i;}}if(c==']'){int ls=b[--l];if(j==ls){j=0;}else if(!j&&t[p]!=0){i=ls-1;}}}}}
+i,l,j,c,b[999],*t;main(p,a)char**a;{for(t=b;*++a;p=i=l=j=0){for(t+=99;c=*(*a+i);i++){if(!j){if(c==43)t[p]++;if(c==45)t[p]--;if(c==62)p++;p-=c-60?0:1;if(c==46)putchar(t[p]);}if(c==91){b[l++]=i;if(!t[p]*!j)j=i;}if(c==93){if(j==b[--l])j=0;else if(!j*t[p])i=b[l]-1;}}}}
