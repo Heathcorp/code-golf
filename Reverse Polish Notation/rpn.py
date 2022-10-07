@@ -1,6 +1,5 @@
 import sys
-for e in sys.argv[1:]:
- s=[0]*99
- i=0
- for t in e.split(" "):exec(["i+=1;s[i]=int(t)",f"s[i-1]{t}=s[i];i-=1"][t[0]<'0'])
- print(int(s[i]))
+s=[]
+for l in sys.argv[1:]:
+ for o in l.split():exec(["s+=[int(o)]",f"s+=[s.pop(-2){o}s.pop()]"][o<'0'])
+ print(int(s[-1]))
