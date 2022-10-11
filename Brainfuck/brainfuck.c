@@ -1,1 +1,1 @@
-i,l,j,c,b[999],*t=b;main(p,a)char**a;{for(;*++a;p=i=l=j=0)for(t+=99;c=i[*a];i++){if(!j)t[p]+=c-43?c-45?0:-1:1,p+=c-62?c-60?0:-1:1,c-46?0:putchar(t[p]);if(c==91)b[l++]=i,j=t[p]+j?j:i;if(c==93)j=j-b[--l]?j:0,i=!j*t[p]?b[l]-1:i;}}
+i,l,j,c,b[999],*t=b;main(p,a)char**a;{for(;*++a;p=i=l=j=0)for(t+=99;c=i[*a];i++){!j?t[p]+=c-43?c-45?0:-1:1,p+=c-62?c-60?0:-1:1,c-46?0:putchar(t[p]):0;c==91?b[l++]=i,j=t[p]+j?j:i:0;c==93?j=j-b[--l]?j:0,i=!j*t[p]?b[l]-1:i:0;}}
