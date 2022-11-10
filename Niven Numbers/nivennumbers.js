@@ -1,3 +1,1 @@
-for(i=0;i++<100;i%n?0:print(i)){
-for(n=0,j=i;j;j=Math.floor(j/10))n+=j%10
-}
+for(i=0;i++<100;i%(""+i).split("").reduce((a,b)=>+a+(+b))?0:print(i));
