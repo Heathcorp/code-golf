@@ -1,1 +1,1 @@
-for(i=0;i++<201;k==1?print(i):0)for(d=0,k=i;d++<9;)k=[...""+k].reduce((a,b)=>+b*+b+a,0)
+for(i=0;i++<201;k>1?0:print(i))for(d=9,k=i;d--;)k=[...""+k].reduce((a,b)=>a+b*b,0)
