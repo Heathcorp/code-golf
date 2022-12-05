@@ -11,9 +11,7 @@ for a in sys.argv[1:]:
    l+=[i]
    if j<1and t[p]<1:j=i
   if j:c=0
-  if c=='<':p-=1
-  if c=='>':p+=1
-  if c=='+':t[p]+=1
-  if c=='-':t[p]-=1
+  p+=(c=='>')-(c=='<')
+  t[p]+=(c=='+')-(c=='-')
   if c=='.':print(chr(t[p]),end='')
   i+=1
