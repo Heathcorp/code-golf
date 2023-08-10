@@ -1,1 +1,1 @@
-char*s;main(i,v,l,j,I)char**v;{for(;s=*++v;puts(""))for(l=i=j=I=0;l<strlen(s);puts("")){printf("%08x: ",l);l+=16;for(;i<l;i++%2?printf(" "):0)s[I]?printf("%02x",s[I++]):printf("  ");printf(" ");for(;j<l&&s[j];j++)putchar(s[j]-10?s[j]:46);}}
+char*s;main(i,v,l,j,I)char**v;{for(;s=*++v;puts(""))for(l=i=j=I=0;l<strlen(s);puts("")){printf("%08x: ",l);for(l+=16;i<l;i++%2?printf(" "):0)s[I]?printf("%02x",s[I++]):printf("  ");for(printf(" ");j<l&&s[j];j++)putchar(s[j]-10?s[j]:46);}}
