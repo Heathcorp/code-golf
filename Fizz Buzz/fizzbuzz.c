@@ -1,1 +1,4 @@
-main(i,a,b){for(;i<101;a=i%3,b=i%5,printf(a*b?"%s%s%d\n":"%s%s\n",a?"":"Fizz",b?"":"Buzz",i++));}
+i;main(){for(;i++<100;)printf("%d
+\0FizzBuzz
+\0Fizz
+"+(i%3?i%5?0:8:i%5?14:4),i);}
