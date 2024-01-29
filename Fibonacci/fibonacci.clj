@@ -1,8 +1,7 @@
-(def a (atom 0))
-(def b (atom 1))
-(dotimes [i 31]
-	(println @a)
-	(def c (+ @a @b))
-	(reset! a @b)
-	(reset! b c)
+(loop [n 30 a 0 b 1]
+	(println a)
+	(if (> n 0)
+		(recur (dec n) b (+ a b))
+		n
+	)
 )
