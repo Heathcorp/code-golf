@@ -1,1 +1,1 @@
-(loop[a 1 b 0](println b)(if(< a 1e6)(recur(+ a b)a)a))
+(loop[a 1 b 0](prn b)(if(> 1e6 a)(recur(+ a b)a)a))
