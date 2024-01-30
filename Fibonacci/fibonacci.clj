@@ -1,7 +1,1 @@
-(loop [n 30 a 0 b 1]
-	(println a)
-	(if (> n 0)
-		(recur (dec n) b (+ a b))
-		n
-	)
-)
+(loop[a 1 b 0](println b)(if(< a 1e6)(recur(+ a b)a)a))
