@@ -1,62 +1,45 @@
-let NUL @1;
-let buf[36] @2; // = [ [aDigit, bDigit, temp, temp, temp, display?] * 6 ]
-buf[1] = 1;
-buf[5] = 1;
-// a = 0; b = 1
+let N = 1; // = 31
+drain 5 { N += 6; }
 
-drain 31 {
-  // print a:
-  bf @1 {
-    // start at the most significant digit (last in the array)
-    // check the "display?" byte to see if this digit has been reached yet
-    >>>>>>[>>>>>>]<<<<<<[
-      <<<<<{
-        let aDigit @0;
-        let bDigit @1;
-        let shouldDisplay @5;
-        assert aDigit unknown;
-        assert bDigit unknown;
-        assert shouldDisplay equals 1;
+let buf[36] @1; // = [ [aDigit, bDigit, display?, temp, temp, temp] * 6 ]
+buf[0] = 1;
+buf[1] = -1;
+buf[2] = 1;
+// a = 1; b = -1;
+// this is so that it prints 0 on the first loop
 
-        output '0' + aDigit;
-      }>>>>> <<<<<<
-    ]
-    // returned to the null byte (print newline)
-    ++++++++++.[-]
-  }
-
-  // need to do the fibonacci shuffle
+drain N {
+  // do the fibonacci shuffle
   // temp = a;
   // a = a + b;
   // b = temp;
   // or thereabouts:
-
   bf @1 {
-    >>>>>>[
-      <<<<<{
+    >>[
+      <<{
         // map the current element cells to variables
         let aDigit @0;
         let bDigit @1;
-        let shouldDisplay @5;
+        let shouldDisplay @2;
         assert aDigit unknown;
         assert bDigit unknown;
         assert shouldDisplay equals 1;
         // same for the next element
         let nextA @6;
         let nextB @7;
-        let nextDisplay @11;
+        let nextDisplay @8;
         assert nextA unknown;
         assert nextB unknown;
         assert nextDisplay unknown;
 
         {
-          let temp = aDigit;
-          drain bDigit into temp;
-          drain aDigit into bDigit;
+          let temp;
+          drain aDigit into temp bDigit;
+          
           let tens = 10; // basically a mod 10 check value
-          drain temp into aDigit {
+          drain bDigit into aDigit {
             tens -= 1;
-            // this causes like 2 allocations FYI
+            // if not causes like 2 allocations FYI
             if not tens {
               aDigit -= 10;
               // carry
@@ -65,10 +48,35 @@ drain 31 {
               nextDisplay = 1;
             }
           }
+          drain temp into bDigit;
         }
         
-      }>>>>>
+      }>>
     >>>>>>
-    ]<<<<<<[<<<<<<]
+    ]<<<<<<
+
+    // now print a:  
+    // start at the most significant digit (last in the array)
+    // check the "display?" byte to see if this digit has been reached yet
+    [
+      <<{
+        let aDigit @0;
+        let bDigit @1;
+        let shouldDisplay @2;
+        assert aDigit unknown;
+        assert bDigit unknown;
+        assert shouldDisplay equals 1;
+
+        {
+          let c = aDigit;
+          drain 8 { c += 6; }
+          output c;
+        }
+      }>> <<<<<<
+    ]
+    // print newline
+    ++++++++++.[-]
+    // return to the start
+    >>>>
   }
 }
