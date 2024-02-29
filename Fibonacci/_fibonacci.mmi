@@ -1,10 +1,10 @@
 let N = 1; // = 31
 drain 5 { N += 6; }
 
-let buf[36] @1; // = [ [aDigit, bDigit, display?, temp, temp, temp] * 6 ]
+let buf[36] @1; // = [ [display?, aDigit, bDigit, temp, temp, temp] * 6 ]
 buf[0] = 1;
-buf[1] = -1;
-buf[2] = 1;
+buf[1] = 1;
+buf[2] = -1;
 // a = 1; b = -1;
 // this is so that it prints 0 on the first loop
 
@@ -15,22 +15,22 @@ drain N {
   // b = temp;
   // or thereabouts:
   bf @1 {
-    >>[
-      <<{
+    [
+      {
         // map the current element cells to variables
-        let aDigit @0;
-        let bDigit @1;
-        let shouldDisplay @2;
+        let shouldDisplay @0;
+        let aDigit @1;
+        let bDigit @2;
+        assert shouldDisplay equals 1;
         assert aDigit unknown;
         assert bDigit unknown;
-        assert shouldDisplay equals 1;
         // same for the next element
-        let nextA @6;
-        let nextB @7;
-        let nextDisplay @8;
+        let nextDisplay @6;
+        let nextA @7;
+        let nextB @8;
+        assert nextDisplay unknown;
         assert nextA unknown;
         assert nextB unknown;
-        assert nextDisplay unknown;
 
         {
           let temp;
@@ -51,32 +51,35 @@ drain N {
           drain temp into bDigit;
         }
         
-      }>>
-    >>>>>>
+      }
+      >>>>>>
     ]<<<<<<
 
     // now print a:  
     // start at the most significant digit (last in the array)
     // check the "display?" byte to see if this digit has been reached yet
     [
-      <<{
-        let aDigit @0;
-        let bDigit @1;
-        let shouldDisplay @2;
+      {
+        let shouldDisplay @0;
+        let aDigit @1;
+        let bDigit @2;
         assert aDigit unknown;
         assert bDigit unknown;
         assert shouldDisplay equals 1;
 
         {
-          let c = aDigit;
+          let c = aDigit; // + '0'
           drain 8 { c += 6; }
           output c;
         }
-      }>> <<<<<<
+      }
+      <<<<<<
     ]
     // print newline
-    ++++++++++.[-]
+    {
+      output '\n';
+    }
     // return to the start
-    >>>>
+    >>>>>>
   }
 }
