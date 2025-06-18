@@ -1,9 +1,7 @@
 #include <u16>
 
-fn println(struct u16 self) {
-  print(n);
-  output '\n';
-}
+
+
 
 fn sub_with_flag(struct u16 self, struct u16 other, cell _carried) {
   copy other.n1 {
@@ -34,54 +32,68 @@ fn is_zero(struct u16 self, cell _is_zero) {
 }
 
 fn divisible(struct u16 dividend, struct u16 divisor, cell _divisible) {
-// output" b:";print(divisor);output" (";debug(divisor);output")\n";
   struct u16 a; set(a, dividend);
   _divisible = true;
   cell dividing = true;
   while dividing {
     cell carried;
-// output" a:";print(a);output" (";debug(a);output")\n";
     sub_with_flag(a, divisor, carried);
-// output" a':";print(a);output" (";debug(a);output")\n";
-// output" c:";print(carried);output" (";debug(carried);output")\n";
     if carried {
       dividing = false;
       _divisible = false;
     }
     cell foo;
     is_zero(a, foo);
-// output" foo:";print(foo);output" (";debug(foo);output")\n";
     if foo {
       dividing = false;
     }
   }
-// output "---------------------\n";
 }
 
-struct u16 n;
-drain 100 {
-  drain 100 {
-    inc(n);
-// output "\n+ + + + + + + + + + + + + + + + + + + + + + + + +\n";
-// output"n:";print(n);output" (";debug(n);output")\n";
 
-    struct u16 i; set(i, n);
-    cell factors = 0;
-    cell nez = 1;
-    while nez {
-      cell divisible;
-      divisible(n, i, divisible);
-      if divisible {
-        factors += 1;
-      }
-      dec(i);
-      ne_zero(i, nez);
+
+
+fn print_if_prime(struct u16 n) {
+  // could use div_2
+  struct u16 _n; set(_n, n);
+  {cell _2 = 2; sub(_n, _2);}
+  cell iterating = true;
+  cell is_prime = true;
+  struct u16 i; i.n0 = 2;
+  // for i in 2..n
+  while iterating {
+// output" n:";print(n);output" (";debug(n);output")\n";
+// output" i:";print(i);output" (";debug(i);output")\n";
+// output" _n:";print(_n);output" (";debug(_n);output")\n";
+// output 10;
+    {cell d; divisible(n, i, d); if d {is_prime = false;}}
+    
+    inc(i);
+    dec(_n);
+    ne_zero(_n, iterating);
+    if not is_prime {
+      iterating = false;
     }
+  }
 
-
-    if not factors - 2 {
-      println(n);
-    }
-// output "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n\n";
+  if is_prime {
+    print(n);
+    output 10;
   }
 }
+
+
+
+
+fn main() {
+  output "2\n";
+  struct u16 n; n.n0 = 3;
+  drain 100 {
+    drain 100 {
+      print_if_prime(n);
+      inc(n);
+    }
+  }
+}
+
+main();
