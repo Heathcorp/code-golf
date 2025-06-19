@@ -1,1 +1,1 @@
-for i in range(1,1001):s='Foo'[i%2*9:]+'Fizz'[i%3*9:]+'Buzz'[i%5*9:]+'Bar'[i%7*9:];print([i,s][s>''])
+for i in range(1,1001):print('Foo'[i%2*4:]+'Fizz'[i%3*5:]+'Buzz'[i%5*5:]+'Bar'[i%7*4:]or i)
