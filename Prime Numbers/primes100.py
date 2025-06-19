@@ -1,3 +1,2 @@
-d=0x8646246266424626424242210
-n=2
-while d:d>>=4;print(n);n+=d&15
+k=P=1
+while k<101:P%k>0==print(k);P*=k*k;k+=1
