@@ -3,14 +3,8 @@
 
 
 
-fn sub_with_flag(struct u16 self, struct u16 other, cell _carried) {
-  copy other.n1 {
-    if not self.n1 {
-      _carried = true;
-    }
-    self.n1 -= 1;
-  }
-  copy other.n0 {
+fn sub_with_flag(struct u16 self, cell other, cell _carried) {
+  copy other {
     if not self.n0 {
       if not self.n1 {
         _carried = true;
@@ -31,7 +25,7 @@ fn is_zero(struct u16 self, cell _is_zero) {
   }
 }
 
-fn divisible(struct u16 dividend, struct u16 divisor, cell _divisible) {
+fn divisible(struct u16 dividend, cell divisor, cell _divisible) {
   struct u16 a; set(a, dividend);
   _divisible = true;
   cell dividing = true;
@@ -54,23 +48,22 @@ fn divisible(struct u16 dividend, struct u16 divisor, cell _divisible) {
 
 
 fn print_if_prime(struct u16 n) {
-  // could use div_2
-  struct u16 _n; set(_n, n);
-  {cell _2 = 2; sub(_n, _2);}
+  cell _n = n.n0 - 2;
+  if n.n1 {
+    _n = 97;
+  }
   cell iterating = true;
   cell is_prime = true;
-  struct u16 i; i.n0 = 2;
+  cell i = 2;
   // for i in 2..n
   while iterating {
-// output" n:";print(n);output" (";debug(n);output")\n";
-// output" i:";print(i);output" (";debug(i);output")\n";
-// output" _n:";print(_n);output" (";debug(_n);output")\n";
-// output 10;
     {cell d; divisible(n, i, d); if d {is_prime = false;}}
     
-    inc(i);
-    dec(_n);
-    ne_zero(_n, iterating);
+    ++i;
+    --_n;
+    if not _n {
+      iterating = false;
+    }
     if not is_prime {
       iterating = false;
     }
@@ -88,9 +81,10 @@ fn print_if_prime(struct u16 n) {
 fn main() {
   output "2\n";
   struct u16 n; n.n0 = 3;
-  drain 100 {
-    drain 100 {
+  drain 49 {
+    drain 102 {
       print_if_prime(n);
+      inc(n);
       inc(n);
     }
   }
